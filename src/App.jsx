@@ -5,31 +5,37 @@ const capabilities = [
     title: 'Deep reasoning',
     copy: 'Maps vague goals into clear plans, evaluates tradeoffs, and keeps complex work coherent across many steps.',
     stat: '01',
+    detail: 'Plans',
   },
   {
     title: 'Production coding',
     copy: 'Designs, debugs, refactors, and explains software with attention to architecture, tests, and maintainability.',
     stat: '02',
+    detail: 'Builds',
   },
   {
     title: 'Creative direction',
     copy: 'Turns raw ideas into polished product narratives, campaigns, interfaces, and brand systems.',
     stat: '03',
+    detail: 'Shapes',
   },
   {
     title: 'Research synthesis',
     copy: 'Condenses dense material into useful briefings, decisions, and next actions without losing nuance.',
     stat: '04',
+    detail: 'Synthesizes',
   },
   {
     title: 'Multimodal thinking',
     copy: 'Connects text, visuals, documents, and interaction patterns into one understandable workspace.',
     stat: '05',
+    detail: 'Connects',
   },
   {
     title: 'Workflow automation',
     copy: 'Coordinates tools, files, data, and repetitive tasks so teams can move from intent to execution faster.',
     stat: '06',
+    detail: 'Orchestrates',
   },
 ]
 
@@ -45,6 +51,12 @@ const metrics = [
   { label: 'Strategic clarity', value: '98', width: '98%' },
   { label: 'Code fluency', value: '94', width: '94%' },
   { label: 'Creative range', value: '96', width: '96%' },
+]
+
+const heroStats = [
+  { value: '5.5x', label: 'faster path from prompt to product' },
+  { value: '128k', label: 'context for ambitious workflows' },
+  { value: '24/7', label: 'partner for focused execution' },
 ]
 
 const featureBands = [
@@ -77,11 +89,13 @@ function App() {
       <section className="hero-section" id="top">
         <div className="hero-copy">
           <p className="eyebrow">OpenAI frontier model showcase</p>
-          <h1>Design for an intelligence that feels like momentum.</h1>
+          <h1>
+            Intelligence with the gravity to move ideas into orbit.
+          </h1>
           <p className="hero-lede">
-            A clean, premium landing page concept for ChatGPT 5.5, presenting
-            reasoning, coding, creativity, and workflow orchestration as a
-            unified product experience.
+            A cinematic landing page concept for ChatGPT 5.5, where reasoning,
+            coding, creativity, and workflow orchestration feel like one
+            luminous command center.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#capabilities">
@@ -91,11 +105,21 @@ function App() {
               View workflow
             </a>
           </div>
+          <div className="hero-stats" aria-label="Model highlights">
+            {heroStats.map((stat) => (
+              <div key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="hero-visual" aria-label="AI capability interface preview">
           <div className="orb orb-one"></div>
           <div className="orb orb-two"></div>
+          <div className="beam beam-one"></div>
+          <div className="beam beam-two"></div>
           <div className="command-card glass-card">
             <div className="card-topline">
               <span></span>
@@ -103,11 +127,15 @@ function App() {
               <span></span>
             </div>
             <p className="prompt-label">Prompt</p>
-            <h2>Turn a loose idea into a launch-ready product story.</h2>
+            <h2>Turn a loose idea into a launch-ready product universe.</h2>
             <div className="response-stack">
               <div className="response-row wide"></div>
               <div className="response-row"></div>
               <div className="response-row short"></div>
+            </div>
+            <div className="console-panel">
+              <span>reasoning.trace</span>
+              <p>Strategy, interface, code, and launch story aligned.</p>
             </div>
           </div>
           <div className="insight-card glass-card">
@@ -115,13 +143,19 @@ function App() {
             <strong>12 connected decisions</strong>
           </div>
           <div className="model-chip">Reasoning + Design + Code</div>
+          <div className="signal-card glass-card">
+            <span>Context lock</span>
+            <strong>99%</strong>
+          </div>
         </div>
       </section>
 
       <section className="logo-strip" aria-label="Core strengths">
-        {featureBands.map((feature) => (
-          <span key={feature}>{feature}</span>
-        ))}
+        <div>
+          {[...featureBands, ...featureBands].map((feature, index) => (
+            <span key={`${feature}-${index}`}>{feature}</span>
+          ))}
+        </div>
       </section>
 
       <section className="section" id="capabilities">
@@ -138,7 +172,10 @@ function App() {
         <div className="capability-grid">
           {capabilities.map((item) => (
             <article className="capability-card" key={item.title}>
-              <span>{item.stat}</span>
+              <div className="capability-card-top">
+                <span>{item.stat}</span>
+                <em>{item.detail}</em>
+              </div>
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
             </article>
@@ -167,6 +204,12 @@ function App() {
             Clean data panels, calm motion, and precise spacing turn abstract
             capability into something people can understand at a glance.
           </p>
+          <div className="signal-grid" aria-label="Experience principles">
+            <span>Legible</span>
+            <span>Fast</span>
+            <span>Composed</span>
+            <span>Adaptive</span>
+          </div>
           <div className="metric-list">
             {metrics.map((metric) => (
               <div className="metric" key={metric.label}>
@@ -198,6 +241,10 @@ function App() {
       <section className="closing-cta" id="launch">
         <p className="eyebrow">What will you build next?</p>
         <h2>Give the model a goal. Let the interface reveal the leap.</h2>
+        <p>
+          From a single spark to a finished artifact, the page now frames GPT
+          5.5 as an engine for beautifully coordinated work.
+        </p>
         <a className="button primary" href="#top">
           Return to top
         </a>
